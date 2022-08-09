@@ -9,7 +9,7 @@ include "templates/auth_header.php";
         <div class="card-body">
           <!-- Logo -->
           <div class="app-brand justify-content-center">
-            <a href="index.html" class="app-brand-link gap-2">
+            <a href="index.php" class="app-brand-link gap-2">
               <span class="app-brand-logo demo">
                 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <defs>
@@ -50,10 +50,14 @@ include "templates/auth_header.php";
           <!-- /Logo -->
           <h5 class="mb-4 text-center">SISTEM INFORMASI INPUT GAJI</h5>
 
-          <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+          <?php if (isset($_GET["pesan"])) : ?>
+            <p class="alert alert-danger"><?= $_GET["pesan"]; ?></p>
+          <?php endif; ?>
+
+          <form id="formAuthentication" class="mb-3" action="check_login.php" method="POST">
             <div class="mb-3">
-              <label for="email" class="form-label">Username</label>
-              <input type="text" class="form-control" id="email" name="email-username" placeholder="Enter your email or username" autofocus />
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Masukan Username" autofocus />
             </div>
             <div class="mb-3 form-password-toggle">
               <div class="d-flex justify-content-between">
