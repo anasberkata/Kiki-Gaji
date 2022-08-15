@@ -12,13 +12,13 @@ $users = query("SELECT * FROM users
     <div class="row">
         <div class="col mb-4 order-0">
 
-            <div class="card">
+            <div class="card pb-3">
                 <div class="row">
                     <div class="col">
                         <h5 class="card-header">Daftar Pengguna</h5>
                     </div>
                     <div class="col">
-                        <a href="" class="btn btn-primary mt-3 mx-3 float-end">Tambah</a>
+                        <a href="user_add.php" class="btn btn-primary mt-3 mx-3 float-end">Tambah</a>
                     </div>
                 </div>
 
@@ -45,8 +45,8 @@ $users = query("SELECT * FROM users
                                     <td><?= $u["email"]; ?></td>
                                     <td><?= $u["role"]; ?></td>
                                     <td>
-                                        <a class="btn btn-sm btn-success" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i></a>
-                                        <a class="btn btn-sm btn-danger" href="javascript:void(0);"><i class="bx bx-trash me-1"></i></a>
+                                        <a class="btn btn-sm btn-success" href="user_edit.php?id_user=<?= $u["id_user"] ?>"><i class="bx bx-edit-alt me-1"></i></a>
+                                        <a class="btn btn-sm btn-danger" href="user_delete.php?id_user=<?= $u["id_user"] ?>" onclick="return confirm('Yakin ingin menghapus pengguna: <?= $u['name'] ?>?')"><i class="bx bx-trash me-1"></i></a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>

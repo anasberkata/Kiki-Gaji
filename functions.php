@@ -27,6 +27,7 @@ function user_tambah($data)
     $email = $data["email"];
     $role = $data["role"];
 
+    $image = "default.jpg";
     $date_created = date("Y-m-d");
     $is_active = 1;
 
@@ -40,7 +41,7 @@ function user_tambah($data)
 
         $query = "INSERT INTO users
 				VALUES
-			(NULL, '$nama', '$email', '$username', '$password', '$role', '$date_created', '$is_active')
+			(NULL, '$nama', '$username', '$email', '$password', '$image', '$role', '$date_created', '$is_active')
 			";
 
         mysqli_query($conn, $query);
@@ -53,7 +54,10 @@ function user_edit($data)
 {
     global $conn;
 
-    $id = $data["id"];
+    // var_dump($_POST);
+    // die;
+
+    $id = $data["id_user"];
     $nama = $data["nama"];
     $username = $data["username"];
     $password = $data["password"];
@@ -62,12 +66,12 @@ function user_edit($data)
 
     $query = "UPDATE users SET
 			nama = '$nama',
-			email = '$email',
 			username = '$username',
+			email = '$email',
 			password = '$password',
 			role_id = '$role'
 
-            WHERE id = $id
+            WHERE id_user = $id
 			";
 
     mysqli_query($conn, $query);
@@ -79,9 +83,202 @@ function user_delete($id)
 {
     global $conn;
 
-    mysqli_query($conn, "DELETE FROM users WHERE id = $id");
+    mysqli_query($conn, "DELETE FROM users WHERE id_user = $id");
     return mysqli_affected_rows($conn);
 }
+
+// --------------------------------------------------------- JABATAN -------------------------------------------------------
+function jabatan_tambah($data)
+{
+    global $conn;
+
+    $jabatan = $data["jabatan"];
+
+    $query = "INSERT INTO jabatan
+				VALUES
+			(NULL, '$jabatan')
+			";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+function jabatan_edit($data)
+{
+    global $conn;
+
+    $id_jabatan = $data["id_jabatan"];
+    $jabatan = $data["jabatan"];
+
+    $query = "UPDATE jabatan SET
+			jabatan = '$jabatan'
+
+            WHERE id_jabatan = $id_jabatan
+			";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+function jabatan_delete($id)
+{
+    global $conn;
+
+    mysqli_query($conn, "DELETE FROM jabatan WHERE id_jabatan = $id");
+    return mysqli_affected_rows($conn);
+}
+
+function karyawan_tambah($data)
+{
+    global $conn;
+
+    $nama = $data["nama"];
+    $jabatan = $data["jabatan"];
+    $gaji_pokok = $data["gaji_pokok"];
+    $date_created = date("Y-m-d");
+    $is_active = 1;
+
+    $query = "INSERT INTO karyawan
+				VALUES
+			(NULL, '$nama', '$jabatan', '$gaji_pokok', '$date_created', '$is_active')
+			";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+function karyawan_edit($data)
+{
+    global $conn;
+
+    $id_karyawan = $data["id_karyawan"];
+    $nama = $data["nama"];
+    $jabatan = $data["jabatan"];
+    $gaji_pokok = $data["gaji_pokok"];
+
+    $query = "UPDATE karyawan SET
+			nama = '$nama',
+			id_jabatan = '$jabatan',
+			gaji_pokok = '$gaji_pokok'
+
+            WHERE id_karyawan = $id_karyawan
+			";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+function karyawan_delete($id)
+{
+    global $conn;
+
+    mysqli_query($conn, "DELETE FROM karyawan WHERE id_karyawan = $id");
+    return mysqli_affected_rows($conn);
+}
+
+
+// --------------------------------------------------------- GAJI-------------------------------------------------------
+function gaji_tambah($data)
+{
+    global $conn;
+
+    $id_petugas = $data["id_petugas"];
+    $bulan = $data["tanggal_gaji"];
+    $tanggal_gaji = $bulan . "-25";
+    $date_created = date("Y-m-d");
+    $is_active = 1;
+
+    $query = "INSERT INTO gaji
+				VALUES
+			(NULL, '$tanggal_gaji', '$id_petugas', '$date_created', '$is_active')
+			";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+function gaji_delete($id)
+{
+    global $conn;
+    hapus_detail_gaji($id);
+
+    mysqli_query($conn, "DELETE FROM gaji WHERE id_gaji = $id");
+
+    return mysqli_affected_rows($conn);
+}
+
+function hapus_detail_gaji($id)
+{
+    global $conn;
+    mysqli_query($conn, "DELETE FROM gaji_detail WHERE id_gaji = $id");
+}
+
+// function gaji_delete_coba01($id)
+// {
+//     global $conn;
+
+//     $query = "DELETE FROM gaji WHERE id_gaji = $id";
+//     $query .= "DELETE FROM gaji_detail WHERE id_gaji = $id";
+
+//     mysqli_multi_query($conn, $query);
+//     return mysqli_affected_rows($conn);
+// }
+
+
+function gaji_detail_tambah($data)
+{
+    global $conn;
+
+    $id_gaji = $data["id_gaji"];
+    $id_karyawan = $data["id_karyawan"];
+    $kehadiran = $data["kehadiran"];
+
+    $karyawan = query("SELECT * FROM karyawan WHERE id_karyawan = $id_karyawan")[0];
+    $total_gaji = $kehadiran * $karyawan["gaji_pokok"];
+
+    $query = "INSERT INTO gaji_detail
+				VALUES
+			(NULL, '$id_gaji', '$id_karyawan', '$kehadiran', '$total_gaji')
+			";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+function gaji_detail_edit($data)
+{
+    global $conn;
+
+    $id_gaji_detail = $data["id_gaji_detail"];
+    $id_gaji = $data["id_gaji"];
+    $id_karyawan = $data["id_karyawan"];
+    $kehadiran = $data["kehadiran"];
+
+    $karyawan = query("SELECT * FROM karyawan WHERE id_karyawan = $id_karyawan")[0];
+    $total_gaji = $kehadiran * $karyawan["gaji_pokok"];
+
+    $query = "UPDATE gaji_detail SET
+			id_karyawan = '$id_karyawan',
+			kehadiran = $kehadiran',
+            total_gaji = $total_gaji
+
+            WHERE id_gaji_detail = $id_gaji_detail
+			";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+
+
+
 
 
 // --------------------------------------------------------- LEGAL ---------------------------------------------------------

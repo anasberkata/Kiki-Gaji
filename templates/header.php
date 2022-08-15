@@ -7,6 +7,9 @@ if (!isset($_SESSION['login'])) {
 }
 
 require '../functions.php';
+
+$id = $_SESSION['id'];
+$my_profile = query("SELECT * FROM users INNER JOIN user_role ON users.role_id = user_role.id_role WHERE id_user = $id")[0];
 ?>
 
 

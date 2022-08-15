@@ -20,12 +20,12 @@ if ($cek > 0) {
 
 	if ($data['role_id'] == 1) {
 		$_SESSION['login'] = true;
-		$_SESSION['id'] = $data['id'];
+		$_SESSION['id'] = $data['id_user'];
 
 		header("location: view_admin/dashboard.php");
 	} else if ($data['role_id'] == 2) {
 		$_SESSION['login'] = true;
-		$_SESSION['id'] = $data['id'];
+		$_SESSION['id'] = $data['id_user'];
 
 		header("location: view_admin/dashboard.php");
 	} else {
