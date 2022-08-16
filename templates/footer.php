@@ -42,6 +42,13 @@
 <!-- Main JS -->
 <script src="../assets/js/main.js"></script>
 
+<script src="../vendor/simple-datatables/simple-datatables.js"></script>
+<script>
+    // Simple Datatable
+    let table1 = document.querySelector('#table1');
+    let dataTable = new simpleDatatables.DataTable(table1);
+</script>
+
 <!-- Page JS -->
 <script src="../assets/js/dashboards-analytics.js"></script>
 

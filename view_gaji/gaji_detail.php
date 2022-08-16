@@ -31,7 +31,7 @@ $gaji_detail = query("SELECT * FROM gaji_detail
                 </div>
 
                 <div class="table-responsive text-nowrap">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="table1">
                         <thead>
                             <tr>
                                 <th>No.</th>

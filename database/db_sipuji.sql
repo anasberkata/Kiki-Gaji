@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 16, 2022 at 09:02 AM
+-- Generation Time: Aug 16, 2022 at 03:56 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -140,7 +140,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `nama`, `username`, `email`, `password`, `image`, `role_id`, `date_created`, `is_active`) VALUES
 (1, 'Owner', 'admin', 'admin@gmail.com', 'admin', 'default.jpg', 1, '2022-08-09', 1),
 (2, 'Bendahara', 'bendahara', 'bendahara@gmail.com', 'bendahara', 'default.jpg', 2, '2022-08-09', 1),
-(4, 'Siti Patimah, S.Kom', 'sitipatimah', 'sitipatimah@gmail.com', '1234567890', 'default.jpg', 1, '2022-08-14', 1);
+(4, 'Siti Patimah, S.Kom', 'sitipatimah', 'sitipatimah@gmail.com', '1234567890', 'default.jpg', 1, '2022-08-14', 1),
+(5, 'Eka Anas Jatnika', 'anasberkata', 'anasberkata@gmail.com', 'Dean114119', 'default.jpg', 1, '2022-08-16', 1);
 
 -- --------------------------------------------------------
 
@@ -233,7 +234,7 @@ ALTER TABLE `karyawan`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_role`

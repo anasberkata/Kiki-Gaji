@@ -23,7 +23,7 @@ $users = query("SELECT * FROM users
                 </div>
 
                 <div class="table-responsive text-nowrap">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="table1">
                         <thead>
                             <tr>
                                 <th>No.</th>

@@ -45,6 +45,9 @@ $my_profile = query("SELECT * FROM users INNER JOIN user_role ON users.role_id =
 
     <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
 
+    <!-- Datatables -->
+    <link rel="stylesheet" href="../vendor/simple-datatables/style.css">
+
     <!-- Page CSS -->
 
     <!-- Helpers -->

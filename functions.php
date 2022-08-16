@@ -32,9 +32,15 @@ function user_tambah($data)
     $is_active = 1;
 
     $cek_email = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
+    $cek_username = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
     if ($cek_email->num_rows > 0) {
         echo "<script>
-                alert('E-Mail sudah terdaftar!');
+                alert('E-Mail sudah terdaftar! Gunakan E-Mail lain');
+                document.location.href= 'user_add.php';
+            </script>";
+    } else if ($cek_username->num_rows > 0) {
+        echo "<script>
+                alert('username sudah terdaftar! Gunakan username lain!');
                 document.location.href= 'user_add.php';
             </script>";
     } else {

@@ -1,6 +1,6 @@
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a href="index.html" class="app-brand-link">
+                    <a href="../view_admin/dashboard.php" class="app-brand-link">
                         <img src="../assets/img/logo.png" class="app-brand-logo demo" width="25">
                         <span class="app-brand-text demo menu-text fw-bolder ms-2">TOKO KIKI</span>
                     </a>
@@ -15,7 +15,7 @@
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item">
-                        <a href="dashboard.php" class="menu-link">
+                        <a href="../view_admin/dashboard.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>

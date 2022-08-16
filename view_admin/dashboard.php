@@ -2,6 +2,12 @@
 include "../templates/header.php";
 include "../templates/aside.php";
 include "../templates/topbar.php";
+
+$karyawan = query("SELECT * FROM karyawan");
+$gaji = query("SELECT * FROM gaji");
+
+$total_karyawan = count($karyawan);
+$total_gaji = count($gaji);
 ?>
 
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -18,7 +24,7 @@ include "../templates/topbar.php";
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Karyawan</span>
-                            <h3 class="card-title mb-2">6 Orang</h3>
+                            <h3 class="card-title mb-2"><?= $total_karyawan ?> Orang</h3>
                         </div>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
@@ -39,7 +45,7 @@ include "../templates/topbar.php";
                         </div>
                     </div>
                     <span class="fw-semibold d-block mb-1">Data Penggajian</span>
-                    <h3 class="card-title mb-2">3 Data</h3>
+                    <h3 class="card-title mb-2"><?= $total_gaji ?> Data</h3>
                 </div>
             </div>
         </div>

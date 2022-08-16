@@ -40,32 +40,32 @@ if (isset($_POST["user_edit"])) {
                     <form action="" method="POST">
                         <input class="form-control" type="hidden" id="id_user" name="id_user" value="<?= $user['id_user'] ?>" />
                         <div class="mb-3 row">
-                            <label for="nama" class="col-md-2 col-form-label">Nama</label>
-                            <div class="col-md-10">
+                            <label for="nama" class="col-md-3 col-form-label">Nama</label>
+                            <div class="col-md-9">
                                 <input class="form-control" type="text" id="nama" name="nama" value="<?= $user['nama'] ?>" />
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="username" class="col-md-2 col-form-label">Username</label>
-                            <div class="col-md-10">
+                            <label for="username" class="col-md-3 col-form-label">Username</label>
+                            <div class="col-md-9">
                                 <input class="form-control" type="text" id="username" name="username" value="<?= $user['username'] ?>" />
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="password" class="col-md-2 col-form-label">Password</label>
-                            <div class="col-md-10">
+                            <label for="password" class="col-md-3 col-form-label">Password</label>
+                            <div class="col-md-9">
                                 <input class="form-control" type="password" id="password" name="password" value="<?= $user['password'] ?>" />
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="email" class="col-md-2 col-form-label">E-Mail</label>
-                            <div class="col-md-10">
+                            <label for="email" class="col-md-3 col-form-label">E-Mail</label>
+                            <div class="col-md-9">
                                 <input class="form-control" type="email" id="email" name="email" value="<?= $user['email'] ?>" />
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="role" class="col-md-2 col-form-label">Role</label>
-                            <div class="col-md-10">
+                            <label for="role" class="col-md-3 col-form-label">Role</label>
+                            <div class="col-md-9">
                                 <select class="form-select" id="role" aria-label="Default select" name="role">
                                     <option value="<?= $user["role_id"]; ?>"><?= $user["role"]; ?></option>
                                     <?php foreach ($user_role as $ur) : ?>
@@ -75,7 +75,7 @@ if (isset($_POST["user_edit"])) {
                             </div>
                         </div>
                         <div class="row justify-content-end">
-                            <div class="col-sm-10">
+                            <div class="col-sm-9">
                                 <button type="submit" name="user_edit" class="btn btn-primary">Ubah</button>
                             </div>
                         </div>
