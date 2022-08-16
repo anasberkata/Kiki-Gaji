@@ -52,8 +52,8 @@ $gaji_detail = query("SELECT * FROM gaji_detail
                                     <td>Rp. <?= number_format($gd["total_gaji"], 0, ',', '.'); ?>,-</td>
                                     <td>
                                         <a class="btn btn-sm btn-success" href="gaji_detail_edit.php?id_gaji_detail=<?= $gd["id_gaji_detail"] ?>&id_gaji=<?= $gd["id_gaji"] ?>"><i class="bx bx-edit-alt"></i></a>
-                                        <a class="btn btn-sm btn-danger" href="gaji_detail_delete.php?id_gaji_detail=<?= $gd["id_gaji_detail"] ?>" onclick="return confirm('Yakin ingin menghapus gaji karyawan: <?= $gd['id_karyawan'] ?>?')"><i class="bx bx-trash"></i></a>
-                                        <a class="btn btn-sm btn-warning" href="gaji_detail_print.php?id_gaji_detail=<?= $gd["id_gaji_detail"] ?>"><i class="bx bx-download"></i></a>
+                                        <a class="btn btn-sm btn-danger" href="gaji_detail_delete.php?id_gaji_detail=<?= $gd["id_gaji_detail"] ?>&id_gaji=<?= $gd["id_gaji"] ?>" onclick="return confirm('Yakin ingin menghapus gaji karyawan: <?= $gd['nama'] ?>?')"><i class="bx bx-trash"></i></a>
+                                        <a class="btn btn-sm btn-warning" href="gaji_detail_print.php?id_gaji_detail=<?= $gd["id_gaji_detail"] ?>" target="_blank"><i class="bx bx-download"></i></a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>

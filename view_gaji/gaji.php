@@ -5,7 +5,8 @@ include "../templates/topbar.php";
 
 $gaji = query("SELECT * FROM gaji
                 INNER JOIN users
-                ON gaji.id_petugas = users.id_user");
+                ON gaji.id_petugas = users.id_user
+                ORDER BY tanggal_gaji DESC");
 ?>
 
 <div class="container-xxl flex-grow-1 container-p-y">

@@ -264,9 +264,10 @@ function gaji_detail_edit($data)
     $total_gaji = $kehadiran * $karyawan["gaji_pokok"];
 
     $query = "UPDATE gaji_detail SET
+			id_gaji = '$id_gaji',
 			id_karyawan = '$id_karyawan',
-			kehadiran = $kehadiran',
-            total_gaji = $total_gaji
+			kehadiran = '$kehadiran',
+			total_gaji = '$total_gaji'
 
             WHERE id_gaji_detail = $id_gaji_detail
 			";
@@ -275,6 +276,32 @@ function gaji_detail_edit($data)
 
     return mysqli_affected_rows($conn);
 }
+
+function gaji_detail_delete($id)
+{
+    global $conn;
+
+    mysqli_query($conn, "DELETE FROM gaji_detail WHERE id_gaji_detail = $id");
+    return mysqli_affected_rows($conn);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
