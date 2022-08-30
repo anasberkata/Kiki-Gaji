@@ -5,7 +5,7 @@ include "../templates/topbar.php";
 
 $karyawan = query("SELECT * FROM karyawan
                 INNER JOIN jabatan
-                ON karyawan.id_karyawan = jabatan.id_jabatan");
+                ON karyawan.id_jabatan = jabatan.id_jabatan");
 ?>
 
 <div class="container-xxl flex-grow-1 container-p-y">
