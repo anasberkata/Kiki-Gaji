@@ -34,7 +34,8 @@ if (isset($_POST["gaji_detail_add"])) {
                         <h5 class="card-header">Input Gaji</h5>
                     </div>
                     <div class="col">
-                        <a href="gaji_detail.php?id_gaji=<?= $id_gaji; ?>" class="btn btn-primary mt-3 mx-3 float-end">Kembali</a>
+                        <a href="gaji_detail.php?id_gaji=<?= $id_gaji; ?>"
+                            class="btn btn-primary mt-3 mx-3 float-end">Kembali</a>
                     </div>
                 </div>
 
@@ -45,9 +46,10 @@ if (isset($_POST["gaji_detail_add"])) {
                             <input class="form-control" type="hidden" name="id_gaji" value="<?= $id_gaji ?>" />
                             <label for="karyawan" class="col-md-3 col-form-label">Karyawan</label>
                             <div class="col-md-9">
-                                <select class="form-select" id="karyawan" aria-label="Default select" name="id_karyawan">
+                                <select class="form-select" id="karyawan" aria-label="Default select"
+                                    name="id_karyawan">
                                     <option>Pilih Karyawan</option>
-                                    <?php foreach ($karyawan as $k) : ?>
+                                    <?php foreach ($karyawan as $k): ?>
                                         <option value="<?= $k["id_karyawan"]; ?>"><?= $k["nama"]; ?></option>
                                     <?php endforeach; ?>
                                 </select>

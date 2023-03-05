@@ -40,7 +40,7 @@ if (isset($_POST["jabatan_add"])) {
                         <div class="mb-3 row">
                             <label for="jabatan" class="col-md-3 col-form-label">Jabatan</label>
                             <div class="col-md-9">
-                                <input class="form-control" type="text" id="jabatan" name="jabatan" />
+                                <input class="form-control" type="text" id="jabatan" name="jabatan" required />
                             </div>
                         </div>
 

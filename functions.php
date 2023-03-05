@@ -1,7 +1,7 @@
 <?php
 
 // KONEKSI DATABASE =====================================================
-$conn = mysqli_connect("localhost", "root", "", "db_sipuji");
+$conn = mysqli_connect("localhost", "root", "", "skripsi_sipuji");
 
 
 function query($query)
@@ -247,12 +247,30 @@ function gaji_detail_tambah($data)
     $karyawan = query("SELECT * FROM karyawan WHERE id_karyawan = $id_karyawan")[0];
     $total_gaji = $kehadiran * $karyawan["gaji_pokok"];
 
-    $query = "INSERT INTO gaji_detail
+    $cek_detail_gaji = mysqli_query(
+        $conn,
+        "SELECT *
+        FROM gaji_detail
+        WHERE id_gaji = '$id_gaji'
+        AND id_karyawan = '$id_karyawan'
+        "
+    );
+
+    if ($cek_detail_gaji->num_rows > 0) {
+        echo "<script>
+                alert('Gaji sudah diinput!');
+                document.location.href= 'gaji_detail.php?id_gaji=' + $id_gaji;
+            </script>";
+    } else {
+        $query = "INSERT INTO gaji_detail
 				VALUES
 			(NULL, '$id_gaji', '$id_karyawan', '$kehadiran', '$total_gaji')
 			";
 
-    mysqli_query($conn, $query);
+        mysqli_query($conn, $query);
+    }
+
+
 
     return mysqli_affected_rows($conn);
 }

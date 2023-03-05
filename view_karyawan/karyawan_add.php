@@ -5,6 +5,9 @@ include "../templates/topbar.php";
 
 $jabatan = query("SELECT * FROM jabatan");
 
+
+
+
 if (isset($_POST["karyawan_add"])) {
     if (karyawan_tambah($_POST) > 0) {
         echo "<script>
@@ -41,15 +44,17 @@ if (isset($_POST["karyawan_add"])) {
                         <div class="mb-3 row">
                             <label for="nama" class="col-md-3 col-form-label">Nama</label>
                             <div class="col-md-9">
-                                <input class="form-control" type="text" id="nama" name="nama" />
+                                <input class="form-control" type="text" id="nama" name="nama" required />
+                                <?= $error; ?>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="jabatan" class="col-md-3 col-form-label">Jabatan</label>
                             <div class="col-md-9">
-                                <select class="form-select" id="role" aria-label="Default select" name="jabatan">
-                                    <option>Pilih Jabatan</option>
-                                    <?php foreach ($jabatan as $j) : ?>
+                                <select class="form-select" id="role" aria-label="Default select" name="jabatan"
+                                    required>
+                                    <option value="">Pilih Jabatan</option>
+                                    <?php foreach ($jabatan as $j): ?>
                                         <option value="<?= $j["id_jabatan"]; ?>"><?= $j["jabatan"]; ?></option>
                                     <?php endforeach; ?>
                                 </select>
@@ -58,7 +63,7 @@ if (isset($_POST["karyawan_add"])) {
                         <div class="mb-3 row">
                             <label for="gaji_pokok" class="col-md-3 col-form-label">Gaji Pokok / Hari (Rp.)</label>
                             <div class="col-md-9">
-                                <input class="form-control" type="number" id="gaji_pokok" name="gaji_pokok" />
+                                <input class="form-control" type="number" id="gaji_pokok" name="gaji_pokok" required />
                             </div>
                         </div>
 

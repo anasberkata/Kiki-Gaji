@@ -37,10 +37,11 @@ if (isset($_POST["gaji_add"])) {
 
                     <form action="" method="POST">
                         <div class="mb-3 row">
-                            <input class="form-control" type="hidden" name="id_petugas" value="<?= $my_profile['id_user'] ?>" />
+                            <input class="form-control" type="hidden" name="id_petugas"
+                                value="<?= $my_profile['id_user'] ?>" />
                             <label for="nama" class="col-md-3 col-form-label">Bulan</label>
                             <div class="col-md-9">
-                                <input class="form-control" type="month" id="nama" name="tanggal_gaji" />
+                                <input class="form-control" type="month" id="nama" name="tanggal_gaji" required />
                             </div>
                         </div>
 
