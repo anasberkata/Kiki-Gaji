@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 16, 2022 at 03:56 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Mar 31, 2023 at 04:42 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `gaji` (
   `id_petugas` int(11) NOT NULL,
   `date_created` date NOT NULL,
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gaji`
@@ -41,7 +41,8 @@ CREATE TABLE `gaji` (
 
 INSERT INTO `gaji` (`id_gaji`, `tanggal_gaji`, `id_petugas`, `date_created`, `is_active`) VALUES
 (8, '2022-01-25', 1, '2022-08-15', 1),
-(9, '2022-02-25', 1, '2022-08-16', 1);
+(9, '2022-02-25', 1, '2022-08-16', 1),
+(10, '2023-03-25', 1, '2023-03-05', 1);
 
 -- --------------------------------------------------------
 
@@ -55,7 +56,7 @@ CREATE TABLE `gaji_detail` (
   `id_karyawan` int(11) NOT NULL,
   `kehadiran` int(11) NOT NULL,
   `total_gaji` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gaji_detail`
@@ -67,7 +68,9 @@ INSERT INTO `gaji_detail` (`id_gaji_detail`, `id_gaji`, `id_karyawan`, `kehadira
 (15, 8, 4, 15, 450000),
 (16, 9, 1, 30, 4500000),
 (17, 9, 2, 25, 1875000),
-(18, 9, 4, 15, 450000);
+(18, 9, 4, 15, 450000),
+(19, 8, 2, 2, 150000),
+(20, 10, 1, 21, 3150000);
 
 -- --------------------------------------------------------
 
@@ -78,7 +81,7 @@ INSERT INTO `gaji_detail` (`id_gaji_detail`, `id_gaji`, `id_karyawan`, `kehadira
 CREATE TABLE `jabatan` (
   `id_jabatan` int(11) NOT NULL,
   `jabatan` varchar(125) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `jabatan`
@@ -104,7 +107,7 @@ CREATE TABLE `karyawan` (
   `gaji_pokok` int(11) NOT NULL,
   `date_created` date NOT NULL,
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `karyawan`
@@ -113,7 +116,7 @@ CREATE TABLE `karyawan` (
 INSERT INTO `karyawan` (`id_karyawan`, `nama`, `id_jabatan`, `gaji_pokok`, `date_created`, `is_active`) VALUES
 (1, 'Eka Anas Jatnika', 1, 150000, '2022-08-15', 1),
 (2, 'Siti Patimah, S.Kom', 2, 75000, '2022-08-15', 1),
-(4, 'Pak Ootong Surotong', 5, 30000, '2022-08-15', 1);
+(4, 'Pak Ootong Surotong', 3, 30000, '2022-08-15', 1);
 
 -- --------------------------------------------------------
 
@@ -131,17 +134,16 @@ CREATE TABLE `users` (
   `role_id` int(11) NOT NULL,
   `date_created` date NOT NULL,
   `is_active` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id_user`, `nama`, `username`, `email`, `password`, `image`, `role_id`, `date_created`, `is_active`) VALUES
-(1, 'Owner', 'admin', 'admin@gmail.com', 'admin', 'default.jpg', 1, '2022-08-09', 1),
-(2, 'Bendahara', 'bendahara', 'bendahara@gmail.com', 'bendahara', 'default.jpg', 2, '2022-08-09', 1),
-(4, 'Siti Patimah, S.Kom', 'sitipatimah', 'sitipatimah@gmail.com', '1234567890', 'default.jpg', 1, '2022-08-14', 1),
-(5, 'Eka Anas Jatnika', 'anasberkata', 'anasberkata@gmail.com', 'Dean114119', 'default.jpg', 1, '2022-08-16', 1);
+(1, 'Admin', 'admin', 'admin@gmail.com', 'admin', 'default.jpg', 1, '2022-08-09', 1),
+(2, 'Owner', 'owner', 'bendahara@gmail.com', 'owner', 'default.jpg', 2, '2022-08-09', 1),
+(4, 'Siti Patimah, S.Kom', 'bendahara', 'sitipatimah@gmail.com', 'bendahara', 'default.jpg', 3, '2022-08-14', 1);
 
 -- --------------------------------------------------------
 
@@ -152,7 +154,7 @@ INSERT INTO `users` (`id_user`, `nama`, `username`, `email`, `password`, `image`
 CREATE TABLE `user_role` (
   `id_role` int(11) NOT NULL,
   `role` varchar(125) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_role`
@@ -160,7 +162,8 @@ CREATE TABLE `user_role` (
 
 INSERT INTO `user_role` (`id_role`, `role`) VALUES
 (1, 'Admin'),
-(2, 'Bendahara');
+(2, 'Owner'),
+(3, 'Bendahara');
 
 --
 -- Indexes for dumped tables
@@ -210,25 +213,25 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `gaji`
 --
 ALTER TABLE `gaji`
-  MODIFY `id_gaji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_gaji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `gaji_detail`
 --
 ALTER TABLE `gaji_detail`
-  MODIFY `id_gaji_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_gaji_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -240,7 +243,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
